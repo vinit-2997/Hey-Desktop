@@ -6,6 +6,7 @@ import webbrowser
 import smtplib
 import requests
 from weather import Weather
+import pyaudio
 
 import pyttsx3
 engine = pyttsx3.init()
@@ -17,7 +18,9 @@ def talkToMe(audio):
 
     print(audio)
     for line in audio.splitlines():
-        os.system("say " + audio)
+        #os.system("say " + audio)
+        os.system(audio)
+
         #  use the system's inbuilt say command instead of mpg123
         text_to_speech = gTTS(text=audio, lang='en')
         text_to_speech.save('audio.mp3')
@@ -107,7 +110,7 @@ def assistant(command):
         talkToMe('Who is the recipient?')
         recipient = myCommand()
 
-        if 'John' in recipient:
+        if 'vinit' in recipient:
             talkToMe('What should I say?')
             content = myCommand()
 
@@ -121,10 +124,10 @@ def assistant(command):
             mail.starttls()
 
             #login
-            mail.login('vinit.7todaai@gmail.com', 'SBSYSSST')
+            mail.login('vinit.7todai@gmail.com', 'SBSYSSST')
 
             #send message
-            mail.sendmail('John Fisher', 'JARVIS2.0@protonmail.com', content)
+            mail.sendmail('John Fisher', 'vinit.todai@somaiya.edu', content)
 
             #end mail connection
             mail.close()
