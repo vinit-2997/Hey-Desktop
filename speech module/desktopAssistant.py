@@ -11,20 +11,23 @@ import pyaudio
 import pyttsx3
 engine = pyttsx3.init()
 engine.say("I will speak this text")
-engine.runAndWait()
+#engine.say("I am Robot 2.0. Speed : 1 terahertz, memory : 1 zigabyte.")
 
-def talkToMe(audio):
-    "speaks audio passed as argument"
 
-    print(audio)
-    for line in audio.splitlines():
-        #os.system("say " + audio)
-        os.system(audio)
+# engine.runAndWait()
 
-        #  use the system's inbuilt say command instead of mpg123
-        text_to_speech = gTTS(text=audio, lang='en')
-        text_to_speech.save('audio.mp3')
-        os.system('start audio.mp3')
+# def engine.say(audio):
+#     "speaks audio passed as argument"
+
+#     print(audio)
+#     for line in audio.splitlines():
+#         #os.system("say " + audio)
+#         os.system(audio)
+
+#         #  use the system's inbuilt say command instead of mpg123
+#         text_to_speech = gTTS(text=audio, lang='en')
+#         text_to_speech.save('audio.mp3')
+#         os.system('start audio.mp3')
 
 
 def myCommand():
@@ -74,16 +77,19 @@ def assistant(command):
             pass
 
     elif 'what\'s up' in command:
-        talkToMe('Just doing my thing')
+        engine.say('Just doing my thing')
+
+    elif 'what\'s your name' in command:
+        engine.say('I am Robot 2.0. Speed : 1 terahertz, memory : 1 zigabyte.')
     # elif 'joke' in command:
     #     res = requests.get(
     #             'https://icanhazdadjoke.com/',
     #             headers={"Accept":"application/json"}
     #             )
     #     if res.status_code == requests.codes.ok:
-    #         talkToMe(str(res.json()['joke']))
+    #         engine.say(str(res.json()['joke']))
     #     else:
-    #         talkToMe('oops!I ran out of jokes')
+    #         engine.say('oops!I ran out of jokes')
 
     # elif 'current weather in' in command:
     #     reg_ex = re.search('current weather in (.*)', command)
@@ -92,7 +98,7 @@ def assistant(command):
     #         weather = Weather()
     #         location = weather.lookup_by_location(city)
     #         condition = location.condition()
-    #         talkToMe('The Current weather in %s is %s The tempeture is %.1f degree' % (city, condition.text(), (int(condition.temp())-32)/1.8))
+    #         engine.say('The Current weather in %s is %s The tempeture is %.1f degree' % (city, condition.text(), (int(condition.temp())-32)/1.8))
 
     # elif 'weather forecast in' in command:
     #     reg_ex = re.search('weather forecast in (.*)', command)
@@ -102,16 +108,16 @@ def assistant(command):
     #         location = weather.lookup_by_location(city)
     #         forecasts = location.forecast()
     #         for i in range(0,3):
-    #             talkToMe('On %s will it %s. The maximum temperture will be %.1f degree.'
+    #             engine.say('On %s will it %s. The maximum temperture will be %.1f degree.'
     #                      'The lowest temperature will be %.1f degrees.' % (forecasts[i].date(), forecasts[i].text(), (int(forecasts[i].high())-32)/1.8, (int(forecasts[i].low())-32)/1.8))
 
 
     elif 'email' in command:
-        talkToMe('Who is the recipient?')
+        engine.say('Who is the recipient?')
         recipient = myCommand()
 
         if 'vinit' in recipient:
-            talkToMe('What should I say?')
+            engine.say('What should I say?')
             content = myCommand()
 
             #init gmail SMTP
@@ -132,13 +138,16 @@ def assistant(command):
             #end mail connection
             mail.close()
 
-            talkToMe('Email sent.')
+            engine.say('Email sent.')
 
         else:
-            talkToMe('I don\'t know what you mean!')
+            engine.say('I don\'t know what you mean!')
 
 
-talkToMe('I am ready for your command')
+engine.say('I am ready for your command')
+engine.say('I am Robot 2.0. Speed : 1 terahertz, memory : 1 zigabyte.')
+
+engine.runAndWait()
 
 #loop to continue executing multiple commands
 while True:
