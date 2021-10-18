@@ -130,7 +130,7 @@ def assistant(command):
             mail.starttls()
 
             #login
-            mail.login('vinit.7todai@gmail.com', 'SBSYSSST')
+            mail.login('vinit.7todai@gmail.com', '*********')
 
             #send message
             mail.sendmail('John Fisher', 'vinit.todai@somaiya.edu', content)
